@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CrystalsCollector Game</title>
+
+    <!-- reset css -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- own css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 text-center">CrystalsCollector Game!</h1>
+            <p class="lead text-center">Try to guess the right value!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                    <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                              <h5 class="card-title">Instructions</h5>
+                              <p class="card-text">You will be given a random number at the start of the game.</p>
+                              <p class="card-text">There are 4 crystals below. By clicking on a crystal, you will add a specific amount of points to your total score</p>
+                              <p class="card-text">You win the game by matching your total score to the random number. You will lose if your score goes over the random number.</p>
+                              <p class="card-text">The value of each crystal is hidden from you until you click it.</p>
+                              <p class="card-text">Each time the game starts, the game will change the values of each crystal.</p>
+                            </div>
+                    </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="card" style="width: 18rem;">
+                            <div class="card-body" id="win-loss-display">
+                              <h5 class="card-title">Wins/Losses</h5>
+                              <p class="card-text">Wins: <span id="wins-display"></span></p>
+                              <p class="card-text">Losses: <span id="losses-display"></span></p>
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="card" style="width: 18rem;">
+                                <div class="card-body" id="random-number-display">
+                                  <h5 class="card-title">The Number is...</h5>
+                                  <!-- <p class="card-text">random number will go here</p> -->
+                                </div>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="card" style="width: 18rem;">
+                                <div class="card-body" id="total-display">
+                                  <h5 class="card-title">Current Score</h5>
+                                  <!-- <p class="card-text">score will go here</p> -->
+                                </div>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="card mx-auto">
+                    <div class="card-body">
+                        <img src="assets/images/red.png">
+                        <img src="assets/images/orange.png">
+                        <img src="assets/images/green.png">
+                        <img src="assets/images/blue.png">
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+    
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Game JS -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    <!-- Boostrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
