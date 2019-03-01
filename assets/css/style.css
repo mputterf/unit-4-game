@@ -2,3 +2,12 @@ img{
     height: 100px;
     width: 100px;
 }
+
+.card{
+    margin-bottom: 30px;
+}
+
+body{
+    background-image: url(../images/background.png);
+    background-size: cover;
+}
