@@ -33,7 +33,7 @@ $("#wins-display").text(wins);
 // Append losses
 $("#losses-display").text(losses);
 // Append total
-$("#total-display").text(total);
+$("#total-display").append("<p id='total-counter'>" + total + "</p>");
 
 for(var i = 0; i<gems.length; i++){
     // select image
@@ -58,5 +58,5 @@ $(".gem").on("click", function(){
     
     // Append new total
     total += gemValue;
-    $("#total-display").text(total);
+    $("#total-counter").text(total);
 })
