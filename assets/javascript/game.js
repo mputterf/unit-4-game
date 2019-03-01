@@ -36,51 +36,65 @@ $("#losses-display").text(losses);
 // Append total
 $("#total-display").append("<p id='total-counter'>" + total + "</p>");
 
-GenerateGemValues();
 
-for(var i = 0; i<gems.length; i++){
-    // select image
-    var gemImage = $("<img>");
-    // make each image a gem from the array which is in the images folder
-    gemImage.attr("src", "assets/images/" + gems[i]);
-    // Add gem class
-    gemImage.addClass("gem");
-    // Assign a value to each gem
-    gemImage.attr("data-gemValue", randomGemValue[i]);
-    // send the gems to html
-    $("#gem-holder").append(gemImage);
-};
+function CreateGems(){
+    for(var i = 0; i<gems.length; i++){
+        // select image
+        var gemImage = $("<img>");
+        // make each image a gem from the array which is in the images folder
+        gemImage.attr("src", "assets/images/" + gems[i]);
+        // Add gem class
+        gemImage.addClass("gem");
+        // Assign a value to each gem
+        gemImage.attr("data-gemValue", randomGemValue[i]);
+        // send the gems to html
+        $("#gem-holder").append(gemImage);
+    };
+}
 
 function ResetGame(){
+    $("#gem-holder").empty();
+    // randomGemValue = [];
     GenerateGemValues();
+    CreateGems();
     total = 0;
     $("#total-counter").text(total);
     randomNumber = Math.floor(Math.random() * (maxRandom - minRandom + 1)) + minRandom;
     $("#random-number").text(randomNumber);
+    // console.log("Here in reset");
+    PlayGame();
 }
 
+function PlayGame(){
 
-$(".gem").on("click", function(){
+    $(".gem").on("click", function(){
 
-    // get the value of each gem, convert to int
-    var gemValue = $(this).attr("data-gemValue");
-    gemValue = parseInt(gemValue);
-    
-    // Append new total
-    total += gemValue;
-    $("#total-counter").text(total);
+        // console.log("Here in on click");
+        // get the value of each gem, convert to int
+        var gemValue = $(this).attr("data-gemValue");
+        gemValue = parseInt(gemValue);
+        
+        // Append new total
+        total += gemValue;
+        $("#total-counter").text(total);
 
-    if(total === randomNumber){
-        wins++;
-        $("#wins-display").text(wins);
-        alert("You win");
-        ResetGame();
-    }
+        if(total === randomNumber){
+            wins++;
+            $("#wins-display").text(wins);
+            alert("You win");
+            ResetGame();
+        }
 
-    if(total > randomNumber){
-        losses++;
-        $("#losses-display").text(losses);
-        alert("You lose");
-        ResetGame();
-    }
-});
+        if(total > randomNumber){
+            losses++;
+            $("#losses-display").text(losses);
+            alert("You lose");
+            ResetGame();
+        }
+    });
+};
+
+ResetGame();
+// GenerateGemValues();
+// CreateGems();
+PlayGame();
