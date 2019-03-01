@@ -11,10 +11,11 @@ var randomNumber = Math.floor(Math.random() * (maxRandom - minRandom + 1)) + min
 var gems = ["red.png", "orange.png", "green.png", "blue.png"];
 var randomGemValue = [];
 
+function GenerateGemValues(){
 // Make an array of values the gems can have, and then shuffle them so we get random, non-repeating values
-for(var i = 0; i < gemMax; i++){
-    randomGemValue[i] = i+1;
-}
+    for(var i = 0; i < gemMax; i++){
+        randomGemValue[i] = i+1;
+    }
 // console.log(randomGemValue);
 
     for (var i = 0; i < randomGemValue.length; i++){
@@ -23,17 +24,19 @@ for(var i = 0; i < gemMax; i++){
         randomGemValue[randomIndex] = randomGemValue[i];
         randomGemValue[i] = temp;
     }
-
+}
 
 // console.log(randomGemValue);
 // Append random number to random number card
-$("#random-number-display").append("<p>" + randomNumber + "</p>");
+$("#random-number-display").append("<p id='random-number'>" + randomNumber + "</p>");
 // Append wins
 $("#wins-display").text(wins);
 // Append losses
 $("#losses-display").text(losses);
 // Append total
 $("#total-display").append("<p id='total-counter'>" + total + "</p>");
+
+GenerateGemValues();
 
 for(var i = 0; i<gems.length; i++){
     // select image
@@ -48,6 +51,13 @@ for(var i = 0; i<gems.length; i++){
     $("#gem-holder").append(gemImage);
 };
 
+function ResetGame(){
+    GenerateGemValues();
+    total = 0;
+    $("#total-counter").text(total);
+    randomNumber = Math.floor(Math.random() * (maxRandom - minRandom + 1)) + minRandom;
+    $("#random-number").text(randomNumber);
+}
 
 
 $(".gem").on("click", function(){
@@ -59,4 +69,18 @@ $(".gem").on("click", function(){
     // Append new total
     total += gemValue;
     $("#total-counter").text(total);
-})
+
+    if(total === randomNumber){
+        wins++;
+        $("#wins-display").text(wins);
+        alert("You win");
+        ResetGame();
+    }
+
+    if(total > randomNumber){
+        losses++;
+        $("#losses-display").text(losses);
+        alert("You lose");
+        ResetGame();
+    }
+});
